@@ -4,39 +4,15 @@ import styled from "styled-components";
 
 const CardContainer = styled.div`
   padding: 24px;
-  border: 1px solid #E6ECEF;
+  border: 1px solid #e6ecef;
   width: 260px;
   border-radius: 8px;
-  box-shadow: ${(props) => (props.variant === "outline" ? "none" : "0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08)")};
-  background-color: ${(props) => (props.variant === "outline" ? "transparent" : "#fff")};
-`;
-
-const UserName = styled.h4`
-  color: #1a1a1a;
-  margin-bottom: 5px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-`;
-
-const UserDescription = styled.p`
-  font-size: 14px;
-  color: #7a869f;
-  display; flex;
-`;
-
-const TwitterIcon = styled(BiLogoTwitter)`
-  color: #00acee;
-  font-size: 18px;
-`;
-
-const FollowerStatus = styled.p`
-  font-size: 16px;
-  color: #7a869f;
-`;
-
-const FollowerCount = styled.span`
-  color: #0C0E11;
-  font-weight: 400; // Change this to the appropriate font-weight class
+  box-shadow: ${(props) =>
+    props.variant === "outline"
+      ? "none"
+      : "0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08)"};
+  background-color: ${(props) =>
+    props.variant === "outline" ? "transparent" : "#fff"};
 `;
 
 const Card = ({ userImg, pName, tUserN, Fvalu, variant }) => {
@@ -44,14 +20,14 @@ const Card = ({ userImg, pName, tUserN, Fvalu, variant }) => {
     <CardContainer variant={variant}>
       <img src={userImg} alt="" />
       <div className="name">
-        <UserName>{pName}</UserName>
-        <UserDescription>
-          <TwitterIcon /> {tUserN}
-        </UserDescription>
+        <h4 className="text-h4 font-semibold text-title mt-4">{pName}</h4>
+        <p className="flex items-center gap-2 mt-0 text-small">
+          <BiLogoTwitter className="icons text-blue-400 text-normal" /> {tUserN}
+        </p>
       </div>
-      <FollowerStatus>
-        <FollowerCount className="follower font-normal">{Fvalu}</FollowerCount> Followers
-      </FollowerStatus>
+      <p className="mt-3 text-description">
+        <span className="text-title">{Fvalu}</span> Followers
+      </p>
     </CardContainer>
   );
 };
